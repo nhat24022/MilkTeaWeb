@@ -26,6 +26,19 @@ class Addmin {
         }
         
     }
+
+    static async GetAllAddMin() {
+        try {
+            let sql = `select * from addmin`;
+            const [getall,_] =await Db.execute(sql);
+            console.log(getall);
+            return getall;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+
     async checkmail (mail){
         let sql = `select idAddmin from addmin where  exists (select * from addmin where mail = '${mail}')`;
         let [isExists,_] = await Db.execute(sql);

@@ -7,7 +7,7 @@ router.route('/').post(AddminController.CreateAddmin);
 
 router.route('/UpdateAdd').post(AddminController.UpdateAdd);
 
-router.route('/AllAdd').post(AddminController.GetAllAddMin);
+router.route('/AllAdd').get(AddminController.GetAllAddMin);
 
 router.route('/deleteAdd').post(AddminController.DeleteAdd);
 
