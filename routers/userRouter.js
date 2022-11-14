@@ -4,7 +4,7 @@ const userController = require('../controllers/userController.js')
 //gel all of users
 router.route('/').get(userController.GetAllUser);
 
-// add new user 
+// ad new user 
 router.route('/NewUser').post(userController.PostNewUser);
 
 //get user by id:

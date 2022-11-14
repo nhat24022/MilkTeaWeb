@@ -1,6 +1,6 @@
 const Db = require('../config/Db.js')
 
-class Addmin {
+class Admin {
     constructor (name, pass, mail) {
         this.name = name;
         this.pass = pass;
@@ -12,9 +12,9 @@ class Addmin {
             if(!check) {
                 var randomString = require("randomstring");
                 let sql = `INSERT INTO Addmin(idAddmin,name,pass,mail) VALUES ('${randomString.generate()}','${this.name}','${this.pass}','${this.mail}');`;
-                const [newAddmin, _] = await Db.execute(sql);
-                console.log(newAddmin)
-                if (newAddmin) {
+                const [newAdmin, _] = await Db.execute(sql);
+                console.log(newAdmin)
+                if (newAdmin) {
                     return 0;
                 }
                 return  2;
@@ -27,7 +27,30 @@ class Addmin {
         
     }
 
-    static async GetAllAddMin() {
+    // ham login AdMin
+    static async LoginAd(mail, pass) {
+        try {
+            let sql = `select idAddmin from addmin where mail = '${Phone}' and pass = '${pass}'`;
+            let [admin,_] = await Db.execute(sql);
+            
+            if (admin[0]) {
+                console.log(admin)
+                console.log('AdMin singIn idUser:'+admin);
+            return admin;
+            }
+            else {
+                console.log('ko tim thay');
+
+                return 1;
+            }
+        } catch (error) {
+            console.log('loi', error);
+            return 2;
+        }
+    }
+
+    // ham lay toan bo AdMin
+    static async GetAllAdMin() {
         try {
             let sql = `select * from addmin`;
             const [getall,_] =await Db.execute(sql);
@@ -37,6 +60,11 @@ class Addmin {
             console.log(error);
             return false;
         }
+    }
+
+    // ham xoa adMin
+    static async DeleteAdMin (name, pass, mail) {
+        let sql = ``
     }
 
     async checkmail (mail){
@@ -51,4 +79,4 @@ class Addmin {
     }
    
 }
-module.exports = Addmin;
+module.exports = Admin;

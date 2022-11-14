@@ -3,11 +3,11 @@ const express = require('express');
 const app = express();
 
 //middleware 
-app.use(express.json()); //add json bodies in the request object
+app.use(express.json()); //ad json bodies in the request object
 
 app.use('/user', require("./routers/userRouter.js"));
 
-app.use('/addMin', require("./routers/addRouter"));
+app.use('/adMin', require("./routers/adRouter"));
 
 
 app.use((err,req,res,next) => {
