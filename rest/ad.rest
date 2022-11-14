@@ -8,9 +8,28 @@ content-type: application/json
     "mail":"minhnhat02@gmail.com"
 }
 ###
+// post login
+post  http://localhost:20222/adMin/Login/
+content-type: application/json
 
+{
+    "mail":"minhnhat02@gmail.com",
+    "pass":" codengu"
+}
+###
 // get all user
 get  http://localhost:20222/adMin/AllAd/
+###
+//update add
+post  http://localhost:20222/adMin/UpdateAd
+content-type: application/json
+
+{
+    "name":"minh nkhon",
+    "pass":" codenu",
+    "mail":"minhnhat02@gmail.com",
+    "id":"jye35o0r5SZujcs6HyTMqGmC3qQyFC14"
+}
 
 
 

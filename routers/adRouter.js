@@ -11,7 +11,7 @@ router.route('/AllAd').get(AdminController.GetAllAdMin);
 
 router.route('/deleteAd').post(AdminController.DeleteAd);
 
-router.route('/').post(AdminController.CreateAdmin);
+router.route('/Login').post(AdminController.Login);
 
 module.exports = router;
 

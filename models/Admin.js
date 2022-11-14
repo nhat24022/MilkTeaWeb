@@ -30,7 +30,7 @@ class Admin {
     // ham login AdMin
     static async LoginAd(mail, pass) {
         try {
-            let sql = `select idAddmin from addmin where mail = '${Phone}' and pass = '${pass}'`;
+            let sql = `select idAddmin from addmin where mail = '${mail}' and pass = '${pass}'`;
             let [admin,_] = await Db.execute(sql);
             
             if (admin[0]) {
@@ -62,9 +62,24 @@ class Admin {
         }
     }
 
-    // ham xoa adMin
-    static async DeleteAdMin (name, pass, mail) {
-        let sql = ``
+    // ham Update thong tin adMin
+    static async UpDate (name, pass, mail, id) {
+        try {
+            let sql = `UPDATE addmin
+                        SET name = '${name}', pass = '${pass}', mail = '${mail}'
+                        WHERE idAddmin = '${id}'`
+            let [result,_] = await Db.execute(sql);
+            console.log(result);
+            if(result) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+            
+        }
+        
     }
 
     async checkmail (mail){
