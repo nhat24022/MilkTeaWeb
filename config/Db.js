@@ -9,5 +9,5 @@ const pool = mysql.createPool ({
     password:process.env.DB_PASSWORD
 });
 
-// tao lal taoget roi nha . clm
+// tao lal taoget roi nha . clm sdsdwe
 module.exports = pool.promise();
