@@ -1,0 +1,10 @@
+post  http://localhost:20222/addMin/
+content-type: application/json
+
+{
+    "name":"minh nhất",
+    "pass":" codengu",
+    "mail":"minhnhat02@gmail.com"
+}
+###
+

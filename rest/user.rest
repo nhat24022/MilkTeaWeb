@@ -1,0 +1,28 @@
+// get user by idUser
+GET  http://localhost:20222/user/829y1cPnLEiDztp08bDHBzBRL4Rx038i
+
+###
+// add the new user
+POST  http://localhost:20222/user/NewUser
+content-type: application/json
+
+{
+    "UserName":"minh nhất",
+    "PhoneNumber":"0866039127",
+    "PassWord":"1"
+}
+
+###
+//get all of users
+GET  http://localhost:20222/user
+
+
+###
+// post dang nhap 
+POST  http://localhost:20222/user/Login
+content-type: application/json
+
+{
+    "phone":"0866039125",
+    "pass":"1+"
+}
