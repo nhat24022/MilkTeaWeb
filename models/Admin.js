@@ -92,6 +92,21 @@ class Admin {
             return false;
         }
     }
+
+    static async deleteAdMin(id) {
+        let sql = `DELETE FROM addmin WHERE idAddmin = '${id}';`
+        try {
+            let [result,_] = await Db.execute(sql);
+            console.log("response from delete adMin : "+result[0])
+            if (result) {
+                return 0;
+            }
+            return 1;
+        } catch (error) {
+            console.log(error);
+            return 2;       
+        }
+    }
    
 }
 module.exports = Admin;

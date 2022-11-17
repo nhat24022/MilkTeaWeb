@@ -30,7 +30,13 @@ content-type: application/json
     "mail":"minhnhat02@gmail.com",
     "id":"jye35o0r5SZujcs6HyTMqGmC3qQyFC14"
 }
+###
+// delete admin
+post  http://localhost:20222/adMin/deleteAd
+content-type: application/json
 
-
+{
+    "id":"rDHRi0ObBD0i7I78wylivtTRTEqHQJ5V"
+}
 
 

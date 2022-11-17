@@ -105,5 +105,19 @@ module.exports.UpdateAd = async (req, res, next) => {
 
 }
 module.exports.DeleteAd = async (req, res, next) => {
-    console.log('delete')
+    let id = req.body.id;
+    id = id.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
+    let data = await Admin.deleteAdMin(id);
+    console.log('status delete adMin:'+ data);
+    switch(data) {
+        case 0:
+            res.status(203).json({"mess":"delete success"})
+            break;
+        case 1: 
+            res.status(203).json({"mess":"error when deleting.."})
+            break;
+        case 2:
+            res.status(203).json({"mess":"error from coding => ask for 0866039125"})
+            break;
+    }
 }
