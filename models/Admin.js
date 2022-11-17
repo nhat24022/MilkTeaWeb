@@ -97,13 +97,13 @@ class Admin {
         let sql = `DELETE FROM addmin WHERE idAddmin = '${id}';`
         try {
             let [result,_] = await Db.execute(sql);
-            console.log("response from delete adMin : "+result[0])
+            console.log("response from delete adMin : "+result)
             if (result) {
                 return 0;
             }
             return 1;
         } catch (error) {
-            console.log(error);
+            console.log(error); 
             return 2;       
         }
     }
