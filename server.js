@@ -9,6 +9,8 @@ app.use('/user', require("./routers/userRouter.js"));
 
 app.use('/adMin', require("./routers/adRouter"));
 
+app.use('/produce', require("./routers/produce"));
+
 
 app.use((err,req,res,next) => {
     console.log(err.stack);

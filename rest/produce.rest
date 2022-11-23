@@ -1,0 +1,9 @@
+
+post  http://localhost:20222/produce/newProduce
+content-type: application/json
+
+{
+    "name":"Trà Sữa Matcha",
+    "price":"20.000",
+    "category":"TraSua"
+}
