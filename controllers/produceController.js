@@ -30,3 +30,39 @@ module.exports.AddProduce = async (req, res ,next) => {
         return;
     }
 }
+
+module.exports.GetProduce = async (req, res, next) => {
+    try {
+        let code = req.params.code;
+        console.log('code get produce'+code);
+        var sql= `select * from produce`
+        switch(code) {
+            //case 0 get all produces
+            case 0:
+                sql = `select * from produce`;
+                break;
+            case 1: // get produce by id produce
+                sql = `select * from produce where idproduce = '${id}'`
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
+        console.log(sql);
+        let data = await Produce.AllProduce("select * from produce");
+        console.log(data);
+        if(data) {
+            res.status(200).json({"data":data,"mess":"success"})
+            return;
+        }
+    } catch (error) {
+        // console.log('error at file produceController :'+ error)
+        res.status(500).json({"mess":"server error. ask for ...."});
+        throw error;
+    }
+}

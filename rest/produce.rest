@@ -1,4 +1,4 @@
-
+// ncreate newe produce
 post  http://localhost:20222/produce/newProduce
 content-type: application/json
 
@@ -7,3 +7,5 @@ content-type: application/json
     "price":"20.000",
     "category":"TraSua"
 }
+###
+get  http://localhost:20222/produce/0
