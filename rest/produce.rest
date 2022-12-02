@@ -3,9 +3,25 @@ post  http://localhost:20222/produce/newProduce
 content-type: application/json
 
 {
-    "name":"Trà Sữa Matcha",
+    "name":"Trà Sữa Hẹ",
     "price":"20.000",
     "category":"TraSua"
 }
 ###
-get  http://localhost:20222/produce/0
+// sreach for produce
+get  http://localhost:20222/produce/1
+Content-Type: application/json
+
+{
+    "id":"gdfg"
+}
+
+###
+//update total
+put  http://localhost:20222/produce/update
+Content-Type: application/json
+
+{
+    "idProduce":"gdfg",
+    "value":3
+}

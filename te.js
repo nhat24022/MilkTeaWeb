@@ -1,4 +1,11 @@
-var a = "12r+s'"
+var i = 5;
 
-a= a.replace(/\+/g, '')
+let a = 5
+
+const d =5
+
+if(true)
+{
+    const d = 7
+}
 console.log(a)

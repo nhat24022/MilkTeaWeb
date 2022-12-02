@@ -34,27 +34,34 @@ module.exports.AddProduce = async (req, res ,next) => {
 module.exports.GetProduce = async (req, res, next) => {
     try {
         let code = req.params.code;
-        console.log('code get produce'+code);
-        var sql= `select * from produce`
+        if(req.body.id) {
+            var id = req.body.id;
+        }
+    
+        console.log('code get produce '+code);
+        console.log('id get produce '+id);
+
+        // var sql= `select * from produce`
         switch(code) {
             //case 0 get all produces
-            case 0:
-                sql = `select * from produce`;
+            case "0":
+                var sql = `select * from produce`;
                 break;
-            case 1: // get produce by id produce
-                sql = `select * from produce where idproduce = '${id}'`
+            case "1": // get produce by id produce
+                var sql = `select * from produce where idproduce = '${id}'`
+                console.log('case 1')
                 break;
-            case 2:
+            case "2":
                 break;
-            case 3:
+            case "3":
                 break;
-            case 4:
+            case "4":
                 break;
-            case 5:
+            case "5":
                 break;
         }
         console.log(sql);
-        let data = await Produce.AllProduce("select * from produce");
+        let data = await Produce.AllProduce(sql);
         console.log(data);
         if(data) {
             res.status(200).json({"data":data,"mess":"success"})
@@ -65,4 +72,33 @@ module.exports.GetProduce = async (req, res, next) => {
         res.status(500).json({"mess":"server error. ask for ...."});
         throw error;
     }
+}
+
+module.exports.UpdateTotal = async (req, res, next) => {
+    if (!req.body.idProduce || !req.body.value) {
+        res.status(304).json({"mess":"Not Modified"});
+        return;
+    }
+    let {idProduce, value} = req.body;
+    idProduce = idProduce.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
+    if(isNaN(value)) {
+        res.status(304).json({"mess":"Not Modified"});
+        return;
+    }
+    let result = await Produce.updateTotal(idProduce,value);
+    switch(result) {
+        case 0:
+            res.status(201).json({"mess":"success"})
+            break;
+        case 1:
+            res.status(500).json({"mess":"can't Update produce"})
+            break;
+        case 2: 
+            res.status(306).json({"mess":"fail, this produce isn`t exist in menu"})
+            break;
+        case 3:
+            res.status(201).json({"mess":"error in server => programmer's mistake"})
+            break;
+    }
+    return;
 }
