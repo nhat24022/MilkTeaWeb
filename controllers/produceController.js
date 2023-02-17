@@ -3,7 +3,7 @@ const Produce = require('../models/produce.js')
 module.exports.AddProduce = async (req, res ,next) => {
     let {name, price, category} = req.body;
     try {
-        name = name.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
+        name = name.replace(/|\'|\?|\>|\<|\+|\*/g, '');
         price = price.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
         category = category.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
         console.log(name, price, category);
@@ -86,6 +86,34 @@ module.exports.UpdateTotal = async (req, res, next) => {
         return;
     }
     let result = await Produce.updateTotal(idProduce,value);
+    switch(result) {
+        case 0:
+            res.status(201).json({"mess":"success"})
+            break;
+        case 1:
+            res.status(500).json({"mess":"can't Update produce"})
+            break;
+        case 2: 
+            res.status(306).json({"mess":"fail, this produce isn`t exist in menu"})
+            break;
+        case 3:
+            res.status(201).json({"mess":"error in server => programmer's mistake"})
+            break;
+    }
+    return;
+}
+
+module.exports.UpdateInfo = async (req,res) => {
+    if(!res.body.column || !res.body.value || res.body.idProduce) {
+        res.status(300).json({"mess":"fail, data is not allowed to leave it blank "})
+        return;
+    }
+    let {column, value, idProduce} = req.body;
+    column = column.replace(/|\'|\?|\>|\<|\+|\*/g, '');
+    value = value.replace(/|\'|\?|\>|\<|\+|\*/g, '');
+    idProduce = idProduce.replace(/|\'|\?|\>|\<|\+|\*/g, '');
+
+    let result = await Produce.updateProduce(column,value,idProduce);
     switch(result) {
         case 0:
             res.status(201).json({"mess":"success"})

@@ -8,7 +8,7 @@ module.exports.GetAllUser =async (req, res , next) =>{
 exports.PostNewUser =async (req, res , next) =>{
     try {
         let {UserName, PhoneNumber, PassWord} = req.body;
-        UserName = UserName.replace(/ |\'|\?|\>|\<|\+|\*/g, '', '');
+        UserName = UserName.replace(/|\'|\?|\>|\<|\+|\*/g, '', '');
         PhoneNumber = PhoneNumber.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
         PassWord = PassWord.replace(/ |\'|\?|\>|\<|\+|\*/g, '');
         console.log(UserName, PhoneNumber, PassWord)
